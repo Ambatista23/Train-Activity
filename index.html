@@ -1,12 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="X-UA-Compatible" content="ie=edge">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
-<link rel="stylesheet" href="../homework/style.css">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
+        <link rel="stylesheet" href="./style.css">
+        <script src="https://code.jquery.com/jquery-3.3.1.js"integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="crossorigin="anonymous"></script>
+        <script src="https://www.gstatic.com/firebasejs/5.9.3/firebase.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.js"></script>
+
 <title>Train Activity</title>
 </head>
 <body>
@@ -24,7 +28,7 @@
                     <div class="card-header">Current Train Schedule</div>
 
                     <div class="card-body">
-                        <table style="width:100%">
+                        <table style="width:100%" id="trainTable">
                             <tr>
                                 <th>Train Name</th>
                                 <th>Destination</th> 
@@ -40,6 +44,7 @@
 
         <br>
 
+<!-- displaying where user inputs train information-->
         <div class="row">
             <div class="col-lg-2"></div>
             <div class="col-lg-8">
@@ -47,22 +52,22 @@
                     <div class="card-header">Add Train</div>
                     
                     <div class="card-body">
-                        <form role="form">
+                        <form role="form" id="form">
                             <div class="form-group row">
                                 <label for="trainInput"></label>
-                                <input type="text" value="Train" onfocus="if(this.value==this.defaultValue)this.value='';" onblur="if(this.value=='')this.value=this.defaultValue;" class="trainName-user-input" id="trainInput" style="width:45%">
+                                <input type="text" placeholder="Train" onfocus="if(this.value==this.defaultValue)this.value='';" onblur="if(this.value=='')this.value=this.defaultValue;" class="form-input" id="trainInput" style="width:45%" name="trainName">
                             </div>
                             <div class="form-group row">
                                 <label for="destinationInput"></label>
-                                <input type="text" value="Destination" onfocus="if(this.value==this.defaultValue)this.value='';" onblur="if(this.value=='')this.value=this.defaultValue;" class="destination-user-input" id="destinationInput" style="width:45%">
+                                <input type="text" placeholder="Destination" onfocus="if(this.value==this.defaultValue)this.value='';" onblur="if(this.value=='')this.value=this.defaultValue;" class="form-input" id="destinationInput" style="width:45%" name="destinationName">
                             </div>
                             <div class="form-group row">
                                 <label for="firstTrainTimeInput"></label>
-                                <input type="text" value="First Train Time (HH:mm- military time) " onfocus="if(this.value==this.defaultValue)this.value='';" onblur="if(this.value=='')this.value=this.defaultValue;" class="firstTrainTime-user-input" id="firstTrainTimeInput" style="width:45%">
+                                <input type="text" placeholder="First Train Time (HH:mm- military time) " onfocus="if(this.value==this.defaultValue)this.value='';" onblur="if(this.value=='')this.value=this.defaultValue;" class="form-input" id="firstTrainTimeInput" style="width:45%" name="trainTimeName">
                             </div>
                             <div class="form-group row">
                                 <label for="frequencyInput"></label>
-                                <input type="text" value="Frequency" onfocus="if(this.value==this.defaultValue)this.value='';" onblur="if(this.value=='')this.value=this.defaultValue;" class="frequency-user-input" id="frequencyInput" style="width:45%">
+                                <input type="text" placeholder="Frequency" onfocus="if(this.value==this.defaultValue)this.value='';" onblur="if(this.value=='')this.value=this.defaultValue;" class="form-input" id="frequencyInput" style="width:45%" name="frequencyName">
                             </div>
                             <button class="btn btn-default" id="addTrain" type="submit">Submit</button>     
                         </form>
@@ -75,10 +80,10 @@
     </div>
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.min.js"></script>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
-<script src="https://www.gstatic.com/firebasejs/5.9.3/firebase.js"></script>
+<script src="./app.js"></script>
 </body>
 </html>
 
